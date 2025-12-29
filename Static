@@ -1,0 +1,53 @@
+static keywords can be used fot data members, methods and inner class (a class within a class)
+
+static keyword cannot be used for local variables (declared within a method)
+	Ex:
+		class MyClass
+		{
+		   void ppp()
+                   {
+			static int n;//error - local variable cannot be static
+                   }
+		}
+
+- static members are accessible directly with the classname without creating objects
+- A static method can access only other static members directly
+- A static variable acts as a global variable within class means all objects of the class can access
+  static variable memory
+
+
+Note: When a class is loaded by the JVM , java allocates memory for the static variables (without creating an object). Later , when an object is created, memory is allocated in heap for the instance variable with default calue. 
+The good example of this is 
+
+
+class Example {
+    static int a;
+    int b;
+
+    void ppp() {
+        a = 10;
+        b = 20;
+    }
+
+    void display() {
+        System.out.println("a: " + a + "b : " + b);
+
+    }
+
+}
+
+public class StaitcDemo {
+    public static void main(String[] args) {
+        Example e1 = new Example();
+        e1.ppp();
+        e1.display();
+
+        Example e2 = new Example();
+        e2.display();
+    }
+}
+
+
+
+here the value od e1.display will be 10 ,20   but e2 will be 10 ,0 
+
