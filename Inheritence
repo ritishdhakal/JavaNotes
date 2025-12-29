@@ -1,0 +1,107 @@
+
+----------------
+Inheritance
+-----------
+- The process of creating new classes from an existing classes is called as inheritance
+- In Java, extends keyword is used to create a new class from an existing class
+
+	Ex:
+		class Vehicle //Base or Super or Parent class
+		{
+		   ...
+		}
+		class Car extends Vehicle //Derived or Sub or Child class
+		{
+		   ...
+		}
+
+- Through inheritance we can achieve reusability of the code
+
+- Java does not support multiple inheritance due to ambiguities means in Java a class can extend
+  only one class
+
+	Ex:
+		class A
+		{
+		   ...
+		}
+		class B
+		{
+		   ...
+		}
+		class C extends A, B {...}//error - does not support multiple inheritance
+
+but in c++ multiple inheritance is supported by to the keyword  virtual ... pointer concept
+
+
+
+Ex:
+
+- Inheritance is "is-a" relationship
+
+has-a relationship
+------------------
+Ex:
+	class Book
+	{
+	  ...
+	}
+
+	class Library extends Book {...} //not good Library is a book
+
+
+	class Library //Library has Book
+	{
+	   Book book;
+	}
+
+Code with example 
+
+
+
+class Base {
+    int i;
+    int j;
+
+    void inputij(int i, int j) {
+        this.i = i;
+        this.j = j;
+    }
+
+    void display() {
+        System.out.println("i = " + i + " " + "j =" + j);
+    }
+
+}
+
+class Derived extends Base {
+
+    int k;
+
+    void inputk(int k) {
+        this.k = k;
+    }
+
+    void displayk() {
+        System.out.println("k = " + k);
+    }
+}
+
+public class InheritanceDemo1 {
+    public static void main(String[] args) {
+        Base b = new Base();
+        b.display(); // i = 0; j = 0 {default value}
+
+        b.inputij(10, 20);
+        b.display(); // {i = 10 , j =20}
+
+        Derived d = new Derived();
+        d.display(); // i = 0; j = 0 {because when i create a new object i and j are created in
+                     // different memory with default value}
+        d.inputij(40, 30);
+        d.display(); // i = 40 j =30
+
+        d.inputk(100);
+        d.displayk(); // k =100
+    }
+}
