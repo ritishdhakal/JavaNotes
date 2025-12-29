@@ -1,0 +1,33 @@
+Packages
+--------
+- A package is a collection of related classes (.class files)
+- package keyword is used to create a package
+	Ex:
+		package mypack;
+
+- package statement should be the first statement in the source code file
+	Ex:
+		MyClass.java
+		-------------
+		package mypack;
+		import ...
+		import *  where * is every classes under the package
+		class MyClass1
+		{}
+		class MyClass2
+		{}
+
+- In a source code file we can have only one package statement with multiple import statements
+  and multiple class definitions
+- The classes under the package are stored in a folder whose name is same as the package name
+- Only public classes are accessible outside the package
+- To use the classes of one package into another package we need to import the package
+	Ex:
+		import mypack.MyClass1;
+		import mypack.MyClass2;
+			or
+		import mypack.*;//* indicates all classes under the package
+
+
+if we have package com.oop.java then com is the outer package where as oop is inside com and java is inside oop 
+exmple java.util.Scanner;
