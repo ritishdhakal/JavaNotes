@@ -1,0 +1,54 @@
+Final can be used for
+  -> Variables  
+  -> Methods
+  -> Classes
+
+Final variable
+  It is a constant means the value of variable cannot be modified
+  Example final int Max = 100;
+  Max= 500 //error
+
+final method
+  -> Final method cannot be overridden
+Example : 
+Class Base
+{
+final void ppp()
+{....}
+}
+class Derived extends Base
+{
+void ppp(){...}//error
+}
+
+
+
+Final class
+  -> It cannot be subclassed
+example : final class Base {}
+  class Derived extends Base {}//error
+
+
+There are some predefined final classes 
+
+i. System
+ii. String
+iii. Math
+
+Wrapper classes
+i. Byte
+ii. Short
+iii. Character
+iv. Integer
+v. Long
+vi. float
+vii. Double
+viii. Boolean
+
+Question: What is the output 
+class sample extends Double{} //error
+
+
+
+
+
