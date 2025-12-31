@@ -1,0 +1,124 @@
+
+
+If we write a constructor in the child class and do not explicitly call super(...), Java automatically inserts:
+
+super();
+
+
+as the first statement.
+
+What super() looks for
+super();
+
+calls the no-argument (default) constructor of the parent class.
+
+ The important problem case 
+If the parent class has only a parameterized constructor, like this:
+
+class Parent {
+    Parent(int x) {
+        System.out.println(x);
+    }
+}
+
+
+Then:
+
+Java does NOT create a default constructor
+
+super() has nowhere to go
+
+Result → compile-time error
+
+
+ This will FAIL 
+
+class Child extends Parent {
+    Child() {
+        // Java tries to insert super(); here
+    }
+}
+
+
+❌ Error:
+constructor Parent() is undefined
+
+
+
+
+In ordinary method super() can be anywhere but in constructor super() must be the first statement.
+for example
+
+Derived(int k){
+super();
+this.k = k;
+} //it works
+
+
+Derived(int k){
+
+this.k = k;
+super();
+} // error 
+
+A constructor cannot call multiple super() methods. To reuse multiple constructors, constructor chaining using this() is used so that only one super() call occurs.
+
+
+
+
+
+example programme
+package mypack;
+
+class Base {
+    int i;
+    int j;
+    int k;
+
+    Base(int i, int j) {
+        this.i = i;
+        this.j = j;
+    }
+
+    Base(int i, int j, int m) {
+        this.i = i;
+        this.j = j;
+        this.k = k;
+    }
+
+    Base() {
+    }
+
+    void display() {
+        System.out.println("i = " + i + " " + "j =" + j);
+    }
+
+}
+
+class Derived extends Base {
+
+    int k;
+
+    Derived(int k) {
+        super(30, 40);
+
+        this.k = k;
+    }
+
+    void display() {
+        System.out.println("k = " + k + "i " + i + "j " + j);
+    }
+}
+
+public class ConstructorInheritence {
+    public static void main(String[] args) {
+        // Base b = new Base(10, 30);
+        // b.display();
+
+        Derived d = new Derived(30);
+        d.display();
+    }
+}
+
+
+
