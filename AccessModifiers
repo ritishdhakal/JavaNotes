@@ -1,0 +1,152 @@
+Inner Class
+
+A class within a class is called as an inner class
+
+example class Outer {
+class inner {
+
+}
+}
+Syntax for creating object of inner class
+Outer.inner innerobj = new Outer().new inner();
+
+
+Access modifier
+-private
+-default
+-protected
+-public
+
+Non-access modifier
+-static
+-final
+-abstract
+-synchronized
+- transient
+
+Note: Only final modifier is allowed for the local variable
+
+- private
+	- A class cannot be private
+		Ex:
+			private class MyClass {} //error
+	- private keyword can be used for data members, methods and inner classes
+	- private members are accessible only within the same class
+		Ex:
+			class A
+			{
+			   private int n;
+			   void ppp()
+			   {
+				n = 10;//valid
+		           }
+			}
+			class B
+			{
+			   void qqq()
+			   {
+				A a = new A();
+				a.n = 20;//error - n is not visible (private)
+		           }
+			}
+	
+- default (no need to specify)
+	- A class can be default
+	- accessible only within the same package
+		Ex:
+			package mypack1;
+			public class A
+			{
+			   int n;//default modifier
+			   void ppp()
+			   {
+				n = 10;//valid
+		   	   }
+			}
+			class B
+			{
+			   void qqq()
+			   {
+				A a = new A();
+				a.n = 20;//valid
+			   }
+			}
+			------------------
+			package mypack2;
+			import mypack1.A;
+			class C
+			{
+			  void rrr()
+			  {
+				A a = new A();
+				a.n = 30;//error - n is not visible (default)
+		  	  }
+			}
+
+- protected
+	- A class cannot be protected
+		Ex:
+			protected class MyClass {} //error
+	- protected keyword can be used for data members, methods and inner classes
+	- protected members are accessible within the same package and subclass of another package
+		Ex:
+			package mypack1;
+			public class A
+			{
+			   protected int n;
+			   void ppp()
+			   {
+				n = 10;//valid
+		   	   }
+			}
+			class B
+			{
+			   void qqq()
+			   {
+				A a = new A();
+				a.n = 20;//valid
+			   }
+			}
+			------------------
+			package mypack2;
+			import mypack1.A;
+			class C
+			{
+			  void rrr()
+			  {
+				A a = new A();
+				a.n = 30;//error - n is not visible (protected)
+		  	  }
+			}
+			class D extends A
+			{
+			   void xxx()
+			   {
+				n = 40;//valid
+			   }
+			}
+
+- public
+	- A class can be public
+	- accessible everywhere
+	- If the class is public then the name of the source code file should be same as the classname
+		Ex:
+			MyClass.java
+			------------
+			public class MyClass
+			{}
+	- In a source code file we can have only one public class
+		Ex:
+			A.java (error)
+			------
+			public class A {}
+			public class B {}
+
+Summary
+-------
+- private => accessible only within the same class
+- default => accessible only within the same package
+- protected => accessible within the same package + subclass of another package
+- public => accessible everywhere 
+
+
