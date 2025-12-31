@@ -1,0 +1,48 @@
+Encapsulation is the process of binding data members and methods together into a single unit (class) and restricting direct access to some of the object's components to provide security.
+
+Main goal: Data security and controlled access
+
+Achieved using access modifiers (usually private) and getter/setter methods
+
+ Example
+class Customer {
+    private int age; // data member is private
+
+    // Setter method to control access
+    void setAge(int a) {
+        if (a >= 18 && a <= 60)
+            age = a;
+        else
+            System.out.println("Invalid Age");
+    }
+
+    // Optional: getter method
+    int getAge() {
+        return age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Customer c = new Customer();
+
+        c.age = -20;       //  error: age is private
+        c.setAge(30);      //  allowed
+        System.out.println(c.getAge()); // prints: 30
+    }
+}
+
+ Key Points
+
+Data members should be private
+
+Methods should be public to provide controlled access
+
+Use setter methods to validate data before assigning
+
+Use getter methods to read data
+
+
+Full Encapsulation
+
+A class is fully encapsulated when all its data members are private and accessed only through getter/setter methods.
