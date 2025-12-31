@@ -1,0 +1,115 @@
+Interfaces
+----------
+- It is used to form the rules/specifications
+- Does not force "is-a" relationship
+- In an interface all data members are public, static and final by default
+- In an interface all methods are public and abstract by default
+	Ex:
+		interface I1
+		{
+		   [public static final] int MAX = 100;
+		   [public abstract] void xxx();
+		   [public abstract] void yyy();
+		}
+
+		[] => by default/implicit/optional
+
+- If a class implements an interface then we need to override all abstract methods
+  else make the class as abstract
+	Ex:
+		class C1 implements I1
+		{
+		   void xxx(){...}
+		   void yyy(){...}
+		}
+
+
+- We cannot create objects for interfaces but we can create references referring to 
+  the subclass object
+	Ex:
+		I1 i = new I1();//error
+		I1 i1 = new C1();//valid
+
+- A class can implement multiple interfaces
+	Ex:
+		interface I2
+		{
+		   void zzz();
+		}
+		class C2 implements I1, I2
+		{
+		   void xxx(){...}
+		   void yyy(){...}
+		   void zzz(){...}
+		}
+
+- class to class => extends
+  class to interface => implements
+  interface to interface => extends
+	Ex:
+		interface I3 extends I1 {}
+  interface to class => error
+
+- An interface can extend multiple interfaces
+	Ex:
+		interface I4 extends I1, I2 {..}
+	
+Note
+----
+- From Java 8 version we can defined methods in interfaces using default keyword
+- From Java 8 version we can define static methods in interfaces
+- From Java 9 version we can define private methods in interfaces
+
+	Refer program InterfaceDemo.java
+
+Note
+----
+abstract and final are illegal combination of modifiers
+
+Ex:
+	abstract final class Base {} //error - abstract and final are illegal combination of modifiers (WHY???)
+
+Why are they illegal together? (LOGIC)
+abstract
+
+Means incomplete
+
+Must be overridden by child classes
+
+final
+
+Means cannot be overridden
+
+Cannot be changed or extended
+
+ They contradict each other.
+
+.......................................................................
+Example Programme (InterfaceDemo.java)
+
+
+
+interface shape {
+    void draw();
+
+    default void fill() {
+        System.out.println("It is filled with colors");
+
+    }
+}
+
+class Circle implements shape {
+    public void draw() {
+        System.out.println("It is drawn");
+    }
+}
+
+public class InterfaceDemo {
+    public static void main(String[] args) {
+        shape s1 = new Circle();
+        s1.draw();
+        s1.fill();
+    }
+}
+...............................>>...................................
+
