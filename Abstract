@@ -1,0 +1,151 @@
+Abstract is used to define rules / specifications.
+It tells what a class must have, but not how it works.
+
+Abstract Method
+
+A method which is declared but not defined is called an abstract method
+
+It ends with ;
+Example :
+
+abstract void yyy();
+
+.................................
+
+Abstract method has no body
+
+So we cannot write code inside it
+
+Its main purpose is to force child classes to implement it
+
+.....................
+
+Abstract Class
+
+A class declared using abstract keyword is called abstract class
+
+An abstract class can have: Zero or more abstract methods
+
+Normal methods also
+
+abstract class Sample {
+    abstract void yyy();
+}
+..........................
+
+Important Rule
+
+If a class extends an abstract class, then:
+
+It must override all abstract methods
+
+Otherwise the child class must also be declared abstract
+
+Example:
+
+class Sample1 extends Sample {
+    void yyy() {
+        // implementation
+    }
+}
+
+
+If we don’t want to override:
+
+abstract class Sample2 extends Sample {
+    void aaa() {}
+}
+
+Why we cannot create object of abstract class?
+
+Because Abstract class is incomplete
+
+Abstract methods do not have implementation
+
+Java does not know what code to execute
+
+
+Sample s = new Sample(); // error
+
+
+Real life example:
+
+Abstract class = blueprint of car
+
+Object = real car
+
+Blueprint cannot be driven
+
+Reference of Abstract Class
+
+We cannot create object of abstract class
+
+But we can create reference of abstract class
+
+Sample s = new Sample1();
+
+.....................................
+Here object is of child class
+
+Child class has implementation
+
+So it works
+...........................
+
+What happens when abstract method is called?
+
+JVM checks the object
+
+Calls the overridden method in child class
+
+Abstract method only defines the rule
+
+
+......................
+
+Key Points to Remember
+
+Abstract method → no body
+
+Abstract class → no object
+
+Child class must implement abstract methods
+
+Abstract is used to enforce compulsory behavior
+
+
+
+
+
+Simple line to remember
+
+Abstract method = what is required
+Child class = how it is done
+
+Programme :
+
+abstract class Vehicle
+{
+abstract void drive();
+void applyBreak()
+System.out.println("Applying Break");
+}
+class Car extends Vehicle
+void drive ()
+{
+System.out.println("Driving a Car");
+}
+void changeGear ()
+{
+System.out.println("Chaning Gear");
+}
+}
+public class AbstractDemo {
+public static void main (Stringll args) {
+//Vehicle v = new Vehicle();//error   we cannot create object of abstract class
+Vehicle v = new Car();
+v.drive();
+v. applyBreak();
+//v. changeGear;//error since vehicle can only invoke the overridden method and it's own
+Car c = new Car;
+c. changeGear () ;
