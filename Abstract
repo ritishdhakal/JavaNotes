@@ -124,28 +124,39 @@ Child class = how it is done
 
 Programme :
 
-abstract class Vehicle
-{
-abstract void drive();
-void applyBreak()
-System.out.println("Applying Break");
+
+abstract class Vehicle {
+    abstract void engine();
+
+    void drive() {
+        System.out.println("The vehicle is driven");
+    }
 }
-class Car extends Vehicle
-void drive ()
-{
-System.out.println("Driving a Car");
+
+class Car extends Vehicle {
+
+    void engine() {
+        System.out.println("The engine is electric");
+    }
+
+    void Company() {
+        System.out.println("The car is BYD");
+    }
 }
-void changeGear ()
-{
-System.out.println("Chaning Gear");
+
+public class Abstract {
+    public static void main(String[] args) {
+        Vehicle v = new Car();
+
+        v.engine();
+        v.drive();
+        System.out.println(".................................");
+        Car c = new Car();
+        c.engine();
+        c.Company();
+        c.drive();
+
+    }
+
 }
-}
-public class AbstractDemo {
-public static void main (Stringll args) {
-//Vehicle v = new Vehicle();//error   we cannot create object of abstract class
-Vehicle v = new Car();
-v.drive();
-v. applyBreak();
-//v. changeGear;//error since vehicle can only invoke the overridden method and it's own
-Car c = new Car;
-c. changeGear () ;
+
